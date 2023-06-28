@@ -36,4 +36,27 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
-
+#### Check that it is created
+```
+ lsblk
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0    8G  0 disk
+├─xvda1   202:1    0    8G  0 part /
+├─xvda127 259:0    0    1M  0 part
+└─xvda128 259:1    0   10M  0 part
+xvdf      202:80   0  100G  0 disk
+└─xvdf1   202:81   0   20G  0 part
+```
+####  Create a directory
+#### mount it 
+```
+sudo mount /dev/xvdf1 yannick/
+[ec2-user@ip-172-31-2-117 ~]$ lsblk
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0    8G  0 disk
+├─xvda1   202:1    0    8G  0 part /
+├─xvda127 259:0    0    1M  0 part
+└─xvda128 259:1    0   10M  0 part
+xvdf      202:80   0  100G  0 disk
+└─xvdf1   202:81   0   20G  0 part /home/ec2-user/yannick
+```
